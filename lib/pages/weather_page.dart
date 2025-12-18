@@ -83,34 +83,41 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 231, 233, 233),
-      body: Center(
-        child: _isLoading
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  CircularProgressIndicator(),
-                  SizedBox(height: 10),
-                  Text("Your weather data will arrive soon..."),
-                ],
-              )
-            : _error != null
-            ? Text(_error!)
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '${_weather?.subLocality}, ${_weather?.locality}, ${_weather?.cityName}, ${_weather?.country}',
-                    style: TextStyle(fontSize: 24),
-                    textAlign: TextAlign.center,
-                  ),
-                  Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
-                  Text('${_weather?.mainCondition}'),
-                  Text(
-                    '${_weather!.temperature.round()}° C',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: _isLoading
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    CircularProgressIndicator(),
+                    SizedBox(height: 10),
+                    Text("Your weather data will arrive soon..."),
+                  ],
+                )
+              : _error != null
+              ? Text(_error!)
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.pin_drop_outlined, size: 32),
+                    Text(
+                      '${_weather?.locality}, ${_weather?.cityName}, ${_weather?.country}',
+                      style: TextStyle(fontSize: 24),
+                      textAlign: TextAlign.center,
+                    ),
+                    Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
+                    Text('${_weather?.mainCondition}'),
+                    Text(
+                      '${_weather!.temperature.round()}° C',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+        ),
       ),
     );
   }

@@ -25,7 +25,7 @@ class WeatherService {
       )),
     );
 
-    print(response.body);
+    // print(response.body);
 
     // Decode the data if the we get status code of 200
     if (response.statusCode == 200) {
@@ -41,14 +41,17 @@ class WeatherService {
   }
 
   Future<Set<String?>> getCurrentCity() async {
-    bool serviceEnabled;
+    // bool serviceEnabled;
     LocationPermission locationPermission;
 
-    // Check if the location services are enabled:
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return Future.error("Location services are disabled");
-    }
+    // // Check if the location services are enabled:
+    // serviceEnabled = await Geolocator.isLocationServiceEnabled();
+
+    // locationPermission = await Geolocator.requestPermission();
+
+    // if (!serviceEnabled) {
+    //   return Future.error("Location services are disabled");
+    // }
 
     // Get the location permission
     // 1) Check for the persmission

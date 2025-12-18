@@ -10,6 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: "Minimal Weather App", home: WeatherPage());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Minimal Weather App",
+      home: WeatherPage(),
+    );
   }
 }
